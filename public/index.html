@@ -121,6 +121,13 @@ body {
   border: 1px solid var(--color-line);
   border-radius: 12px;
   background: var(--color-panel-raised);
+  transform-origin: center;
+  animation: tumbler-orbit 4s linear infinite;
+}
+
+@keyframes tumbler-orbit {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
 }
 
 .header-actions,
@@ -678,6 +685,10 @@ textarea:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .brand-link img {
+    animation: none;
+  }
+
   *,
   *::before,
   *::after {
