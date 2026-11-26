@@ -30,20 +30,13 @@ export class GoogleWebAppClient {
         body: JSON.stringify({ ...values, action }),
         redirect: 'follow',
       });
-    } catch {
-      throw new BadGatewayException(connectionError);
-    }
-
-    try {
       result = (await response.json()) as GoogleWebAppResponse<T>;
     } catch {
       throw new BadGatewayException(connectionError);
     }
 
-    if (result && result.ok === false) {
-      throw new BadGatewayException(
-        typeof result.error === 'string' ? result.error : connectionError,
-      );
+    if (result && result.ok === false && typeof result.error === 'string') {
+      throw new BadGatewayException(result.error);
     }
     if (!response.ok || !result || result.ok !== true || !('data' in result)) {
       throw new BadGatewayException(connectionError);

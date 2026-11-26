@@ -19,36 +19,18 @@ export class AuthController {
   login(
     @Body() credentials: { username?: unknown; password?: unknown },
     @Req() request: Request,
-  ): Promise<{ user: AuthUser } | { error: string }> {
+  ): { user: AuthUser } | { error: string } {
     const username = credentials?.username;
     const password = credentials?.password;
     const account = typeof username === 'string' ? accounts[username] : undefined;
 
     if (!account || account.password !== password) {
-      return Promise.resolve({ error: '로그인 정보를 확인하세요.' });
+      return { error: '로그인 정보를 확인하세요.' };
     }
 
-    if (typeof username !== 'string') {
-      return Promise.resolve({ error: '로그인 정보를 확인하세요.' });
-    }
-
-    const user = { username, role: username };
-    return new Promise<{ user: AuthUser }>((resolve, reject) => {
-      request.session.regenerate((error) => {
-        if (error) {
-          reject(error);
-          return;
-        }
-        request.session.user = user;
-        request.session.save((saveError) => {
-          if (saveError) {
-            reject(saveError);
-            return;
-          }
-          resolve({ user });
-        });
-      });
-    });
+    const user = { username: username as string, role: username as string };
+    request.session.user = user;
+    return { user };
   }
 
   @Post('logout')

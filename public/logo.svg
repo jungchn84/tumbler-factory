@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="텀블러 공장">
+  <defs>
+    <linearGradient id="cup" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#57a879" />
+      <stop offset="1" stop-color="#276447" />
+    </linearGradient>
+  </defs>
+  <rect x="3" y="3" width="58" height="58" rx="18" fill="#eaf4ed" />
+  <path d="M20 16h24l-2.5 35h-19L20 16Z" fill="url(#cup)" />
+  <path d="M18 13h28v6H18z" rx="2" fill="#19342d" />
+  <path d="M25 26h14" stroke="#d9f0df" stroke-width="3" stroke-linecap="round" />
+  <path d="M27 34h10" stroke="#d9f0df" stroke-width="3" stroke-linecap="round" />
+  <path d="M48 29h4a5 5 0 0 1 0 10h-5" fill="none" stroke="#276447" stroke-width="3" stroke-linecap="round" />
+  <path d="M29 55h18" stroke="#8bbf9a" stroke-width="3" stroke-linecap="round" />
+</svg>
