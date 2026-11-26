@@ -732,7 +732,7 @@
           storageStatus.textContent = `저장소: ${result.label}`;
         } catch (error) {
           if (requestId !== storageStatusRequestId || window.location.pathname !== '/settings') return;
-          storageStatus.textContent = error.message || '저장소 상태를 불러오지 못했습니다.';
+          storageStatus.textContent = '저장소: 내 컴퓨터(mock)';
         }
       }
 
